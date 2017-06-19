@@ -1,0 +1,8 @@
+body {
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale; // optimize font in firefox
+  -webkit-font-smoothing: antialiased; // apply font anti-aliasing
+  text-rendering: optimizeLegibility; // firefox counts readability more than display speed
+}
