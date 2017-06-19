@@ -1,10 +1,5 @@
 const gulp = require('gulp');
 const del = require('del');
-const metalsmith = require('gulp-metalsmith');
-const markdown = require('metalsmith-markdown');
-const permalinks = require('metalsmith-permalinks');
-const layouts = require('metalsmith-layouts');
-// const contentful = require('contentful');
 const fs = require('fs');
 const runSequence = require('run-sequence');
 const $ = require('gulp-load-plugins')();
@@ -17,10 +12,13 @@ const stylesTask = require('./gulp/styles');
 const scriptsTask = require('./gulp/scripts');
 const lintStylesTask = require('./gulp/lintStyles');
 const lintScriptsTask = require('./gulp/lintScripts');
+const metalsmithTask = require('./gulp/metalsmith');
 
 //Task definitions
 
 gulp.task('images', imagesTask(gulp, $));
+
+gulp.task('metalsmith', metalsmithTask(gulp, $));
 
 gulp.task('lintStyles', lintStylesTask(gulp, $));
 
@@ -41,28 +39,6 @@ gulp.task('serve:dev', serveTask(gulp, { env: 'dev' }));
 gulp.task('serve:prod', serveTask(gulp, { env: 'prod' }));
 
 gulp.task('serve', ['serve:dev']);
-
-gulp.task('metalsmith', ['clean'], function () {
-  return gulp.src('./src/**')
-    .pipe(metalsmith({
-      use: [
-        markdown(),
-        permalinks(),
-        layouts({engine: 'handlebars'})
-      ],
-      metadata: {
-        title: "Static Contentful Site",
-        description: "It's about saying »Hello« to the World.",
-        generator: "Metalsmith",
-        url: "http://www.metalsmith.io/"
-      },
-    }))
-    .pipe(gulp.dest('./build'));
-});
-
-gulp.task('watch', function () {
-  gulp.watch('./src/**', ['metalsmith']);
-});
 
 gulp.task('clean', del.bind(null, [config.paths.dist]));
 
