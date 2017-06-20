@@ -9,7 +9,8 @@ const PATHS = {
   icons:      'src/icons',
   fonts:      'src/fonts',
   images:     'src/images',
-  layouts:    'layouts'
+  layouts:    'layouts',
+  partials:   'partials'
 };
 
 module.exports = {

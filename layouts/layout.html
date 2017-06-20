@@ -12,17 +12,13 @@
 </head>
 <body>
 
-  <nav class="pa3 bb bb-black">
-    <a class="link dim black b f3 dib" href="/">{{ title }}</a>
-  </nav>
+  {{> topbar}}
 
   <main class="mw9 center ph3 pv2 pv5-ns">
     {{{ contents }}}
   </main>
 
-  <footer class="pa3 bt bt-black">
-    <p>Generated with {{ generator }} &mdash; <a href="{{ url }}">{{ url }}</a></p>
-  </footer>
+  {{> footer}}
 
   <script src="/js/main.js"></script>
 

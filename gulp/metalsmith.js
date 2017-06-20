@@ -14,7 +14,10 @@ module.exports = (gulp, $, options) => {
         use: [
           markdown(),
           permalinks(),
-          layouts({engine: 'handlebars'})
+          layouts({
+            engine: 'handlebars',
+            partials: config.paths.partials
+          })
         ],
         metadata: {
           title: "Static Contentful Site",
@@ -24,7 +27,7 @@ module.exports = (gulp, $, options) => {
         },
       }))
       .on('error', handleError)
-      .pipe(gulp.dest('./build'))
+      .pipe(gulp.dest(config.paths.dist))
       .pipe(browserSync.reload({stream: true}));
   };
 };

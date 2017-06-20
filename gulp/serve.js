@@ -23,7 +23,11 @@ module.exports = (gulp, options) => {
       tunnel);
 
       gulp.watch([`${config.paths.src}/images/**/*`]).on('change', browserSync.reload);
-      gulp.watch([`${config.paths.src}/**/*.md`, `${config.paths.layouts}/*.html`], ['metalsmith']);
+      gulp.watch([
+        `${config.paths.src}/**/*.md`,
+        `${config.paths.layouts}/*.html`,
+        `${config.paths.partials}/*.html`
+      ], ['metalsmith']);
       gulp.watch(`${config.paths.styles}/**/*.scss`, [ 'lintStyles', `styles:${options.env}`]);
       gulp.watch(`${config.paths.scripts}/**/*`, ['lintScripts', `scripts:${options.env}`]);
     });

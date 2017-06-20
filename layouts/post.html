@@ -1,23 +1,25 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>{{ title }}</title>
   <meta name="description" content="{{ description }}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <header>
-    <p>
-      <a href="/">Home</a>
-    </p>
+  {{> topbar}}
 
-  </header>
   <h1>{{ title }}</h1>
   <time>{{ date }}</time>
   {{{ contents }}}
 
-  <footer>
-    <p>Generated with {{ generator }} &mdash; <a href="{{ url }}">{{ url }}</a></p>
-  </footer>
+  {{> footer}}
+  
+  <script src="/js/main.js"></script>
+
 </body>
 </html>
