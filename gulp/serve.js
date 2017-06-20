@@ -10,7 +10,6 @@ const tunnel = (error, bsync) => {
 };
 
 module.exports = (gulp, options) => {
-
   return () => {
     runSequence(['clean'], [`styles:${options.env}`, `scripts:${options.env}`, 'metalsmith'], () => {
       browserSync({
@@ -24,10 +23,7 @@ module.exports = (gulp, options) => {
       tunnel);
 
       gulp.watch([`${config.paths.src}/images/**/*`]).on('change', browserSync.reload);
-      // gulp.watch([
-      //   `${config.paths.data}/**/*`,
-      //   `${config.paths.src}/templates/**/*`
-      // ], ['assemble:watch', 'extras']);
+      gulp.watch([`${config.paths.src}/**/*.md`], ['metalsmith']);
       gulp.watch(`${config.paths.styles}/**/*.scss`, [ 'lintStyles', `styles:${options.env}`]);
       gulp.watch(`${config.paths.scripts}/**/*`, ['lintScripts', `scripts:${options.env}`]);
     });

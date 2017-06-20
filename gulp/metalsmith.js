@@ -1,10 +1,13 @@
+const browserSync = require('browser-sync');
 const metalsmith = require('gulp-metalsmith');
 const markdown = require('metalsmith-markdown');
 const permalinks = require('metalsmith-permalinks');
 const layouts = require('metalsmith-layouts');
 // const contentful = require('contentful');
+const config = require('../config');
+const handleError = require('./handleError');
 
-module.exports = (gulp, $) => {
+module.exports = (gulp, $, options) => {
   return () => {
     return gulp.src('./src/**')
       .pipe(metalsmith({
@@ -20,6 +23,8 @@ module.exports = (gulp, $) => {
           url: "http://www.metalsmith.io/"
         },
       }))
-      .pipe(gulp.dest('./build'));
+      .on('error', handleError)
+      .pipe(gulp.dest('./build'))
+      .pipe(browserSync.reload({stream: true}));
   };
 };
