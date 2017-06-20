@@ -8,7 +8,8 @@ const PATHS = {
   data:       'src/data',
   icons:      'src/icons',
   fonts:      'src/fonts',
-  images:     'src/images'
+  images:     'src/images',
+  layouts:    'layouts'
 };
 
 module.exports = {

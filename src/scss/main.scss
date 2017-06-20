@@ -1,6 +1,10 @@
+@import 'tachyons';
+
 body {
+  margin: 0;
   font-weight: 400;
   font-style: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, helvetica, 'helvetica neue', ubuntu, roboto, noto, 'segoe ui', arial, sans-serif;
   line-height: 1;
   -moz-osx-font-smoothing: grayscale; // optimize font in firefox
   -webkit-font-smoothing: antialiased; // apply font anti-aliasing
