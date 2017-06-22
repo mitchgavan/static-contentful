@@ -24,7 +24,7 @@ module.exports = (gulp, options) => {
 
       gulp.watch([`${config.paths.src}/images/**/*`]).on('change', browserSync.reload);
       gulp.watch([
-        `${config.paths.src}/**/*.md`,
+        `${config.paths.src}/**/*.html`,
         `${config.paths.layouts}/*.html`,
         `${config.paths.partials}/*.html`
       ], ['metalsmith']);

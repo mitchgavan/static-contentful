@@ -15,6 +15,17 @@
   {{> topbar}}
 
   <main class="mw9 center ph3 pv2 pv5-ns">
+    {{#each data.entries}}
+        <li>
+          <div class="c-article c-card u-marginBottomLarge">
+
+            <h2>{{ fields.title }}</h2>
+
+          <p data-markdown>{{ fields.body }}</p>
+
+          </div>
+        </li>
+      {{/each}}
     {{{ contents }}}
   </main>
 
