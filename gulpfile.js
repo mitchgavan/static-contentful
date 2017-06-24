@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const del = require('del');
-const fs = require('fs');
 const runSequence = require('run-sequence');
 const $ = require('gulp-load-plugins')();
 const config = require('./config');

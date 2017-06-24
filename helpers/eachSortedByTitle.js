@@ -1,23 +1,19 @@
-var handlebars  = require('handlebars');
-
-handlebars.registerHelper('eachSortedByTitle', function(context, options) {
-  var ret = ''
+module.exports = function (context, options) {
+  var ret = '';
 
   var sortedContext = context.sort(function (a, b) {
     if (a.fields.title < b.fields.title) {
-      return -1
+      return -1;
     }
     if (a.fields.title > b.fields.title) {
-      return 1
+      return 1;
     }
-    return 0
-  })
+    return 0;
+  });
 
   for (var i = 0, j = sortedContext.length; i < j; i++) {
-    ret = ret + options.fn(sortedContext[i])
+    ret = ret + options.fn(sortedContext[i]);
   }
 
-  return ret
-});
-
-module.exports = handlebars;
+  return ret;
+};

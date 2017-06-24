@@ -4,13 +4,24 @@ var layouts     = require('metalsmith-layouts');
 var permalinks  = require('metalsmith-permalinks');
 var contentful = require('contentful-metalsmith');
 var dataMarkdown = require('metalsmith-data-markdown');
+const handlebars = require('handlebars');
+const glob = require('glob');
+
+glob.sync('./helpers/*.js').forEach((fileName) => {
+  const helper = fileName.split('/').pop().replace('.js', '');
+
+  handlebars.registerHelper(
+    helper,
+    require(`./${fileName}`)
+  );
+});
 
 Metalsmith(__dirname)
   .metadata({
-    title: "Static Contentful Site",
-    description: "It's about saying »Hello« to the World.",
-    generator: "Metalsmith",
-    url: "http://www.metalsmith.io/"
+    title: 'Static Contentful Site',
+    description: 'It\'s about saying Hello to the World.',
+    generator: 'Metalsmith',
+    url: 'http://www.metalsmith.io/'
   })
   .source('./src')
   .destination('./build')
